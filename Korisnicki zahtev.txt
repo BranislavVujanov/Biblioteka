@@ -1,0 +1,12 @@
+
+Korisnicki zahtev:
+
+Potrebno je napraviti aplikaciju za praćenje, čuvanje i ažuriranje podataka o izdavanju knjiga u biblioteci. Pristup aplikaciji
+imaju članovi biblioteke i zaposleni, nakon što se pirjave na sistem. Na aplikaciji članovi mogu pregledati knjige koje 
+se nalaze u biblioteci, dok zaposleni vode evidenciju o izdavanju knjiga, ali takođe vrše i unos, izmenu i brisanje podataka
+o knjigama, kao i o članovima biblioteke.
+O korisnicima sistema se čuvaju sledeći podaci - identifikacioni broj, ime i prezime, a takođe i imejl i šifra preko kojih se 
+prijavljuju na sistem.
+Za svaki primerak knjige je potrebno čuvati njen ID, naslov, autroa, godinu izdanja i broj primeraka. Takođe je potrebno 
+obezbediti evidentiranje datuma zaduženja knjige (i datum isteka zaduženja) od strane člana biblioteke, kao i da li je zaduženje
+važeće, odnosno da li je knjiga vraćena.
