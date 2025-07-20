@@ -3,7 +3,7 @@
 ## O projektu
 
 Ovo je projekat predstavlja zavrsni deo kursa, sa ciljem da demonstrira, tj. implementira znanja stečena tokom kursa, kao što su: rad u Java programu, korišćenje baza, softverskih paterna, 
-pravljenje GUI, analiza korisničkih zahteva i modeleranje softvera. 
+pravljenje GUI, JDBC, analiza korisničkih zahteva i modeleranje softvera. 
 
 Sam projekat se sastoji iz dve aplikacije/projekta. Prvi je desktop aplikacija (nalazi se u folderu 'Biblioteka_DesktopApp'), koja odgovara na korisnički zahtev za projektovanjem aplikacije
 koja vrši praćenje, čuvanje i ažuriranje podataka o izdavanju knjiga u biblioteci. 
