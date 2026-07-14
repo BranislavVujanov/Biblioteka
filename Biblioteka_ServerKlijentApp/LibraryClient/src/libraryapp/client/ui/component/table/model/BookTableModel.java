@@ -43,7 +43,7 @@ public class BookTableModel extends AbstractTableModel{
             case 1:
                 return book.getTitle();
             case 2:
-                return book.getPrintingYear();
+                return book.getPublishingYear();
             case 3:
                 return book.getQuantity();
             default :

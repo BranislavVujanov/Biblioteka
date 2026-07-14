@@ -54,7 +54,7 @@ public class BookServiceImpl implements BookService {
     public void add(Book book) throws Exception{
         String query ="""
                       SELECT * FROM book
-                      WHERE title = '"""+ book.getTitle() +"' AND printing_year = '"+ book.getPrintingYear()+"' AND quantity = '"+ book.getQuantity() +"'";
+                      WHERE title = '"""+ book.getTitle() +"' AND publishing_year = '"+ book.getPublishingYear()+"' AND quantity = '"+ book.getQuantity() +"'";
         List<Book> books = bookRepository.findByQuery(query);
         
         if (books.isEmpty()) bookRepository.add(book);
@@ -87,7 +87,7 @@ public class BookServiceImpl implements BookService {
         //proveri da li korisnik ima trenutnih zaduzenja
         String query = """
                        SELECT l.id, l.issuing_date, l.return_date, l.valid, l.user_profile_id, 
-                                               up.first_name, up.last_name, up.email, up.user_role,l.book_id, b.title, b.printing_year, b.quantity
+                                               up.first_name, up.last_name, up.email, up.user_role,l.book_id, b.title, b.publishing_year, b.quantity
                                                FROM loan l
                                                JOIN user_profile up ON l.user_profile_id = up.id
                                                JOIN book b ON l.book_id = b.id

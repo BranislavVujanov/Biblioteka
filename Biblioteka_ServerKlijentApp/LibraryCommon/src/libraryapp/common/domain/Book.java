@@ -15,26 +15,26 @@ public class Book implements Serializable{
     
     private int id;
     private String title;
-    private int printingYear;
+    private int publishingYear;
     private int quantity;
     private List<Author> authors;
 
     public Book() {
     }
 
-    public Book(String title, int printingYear, int quantity, List<Author> authors) {
+    public Book(String title, int publishingYear, int quantity, List<Author> authors) {
         this.title = title;
-        this.printingYear = printingYear;
+        this.publishingYear = publishingYear;
         this.quantity = quantity;
         this.authors = authors;
     }
     
     
 
-    public Book(int id, String title, int printingYear, int quantity, List<Author> authors) {
+    public Book(int id, String title, int publishingYear, int quantity, List<Author> authors) {
         this.id = id;
         this.title = title;
-        this.printingYear = printingYear;
+        this.publishingYear = publishingYear;
         this.quantity = quantity;
         this.authors = authors;
     }
@@ -55,12 +55,12 @@ public class Book implements Serializable{
         this.title = title;
     }
 
-    public int getPrintingYear() {
-        return printingYear;
+    public int getPublishingYear() {
+        return publishingYear;
     }
 
-    public void setPrintingYear(int printingYear) {
-        this.printingYear = printingYear;
+    public void setPublishingYear(int publishingYear) {
+        this.publishingYear = publishingYear;
     }
 
     public int getQuantity() {
@@ -81,7 +81,7 @@ public class Book implements Serializable{
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", printingYear=" + printingYear + ", quantity=" + quantity + ", authors=" + authors + '}';
+        return "Book{" + "id=" + id + ", title=" + title + ", publishingYear=" + publishingYear + ", quantity=" + quantity + ", authors=" + authors + '}';
     }
 
     

@@ -14,7 +14,7 @@ public class Book {
     
     private int id;
     private String title;
-    private int printingYear;
+    private int publishingYear;
     private int quantity;
     private List<Author> authors;
 
@@ -23,7 +23,7 @@ public class Book {
 
     public Book(String title, int printingYear, int quantity, List<Author> authors) {
         this.title = title;
-        this.printingYear = printingYear;
+        this.publishingYear = printingYear;
         this.quantity = quantity;
         this.authors = authors;
     }
@@ -33,7 +33,7 @@ public class Book {
     public Book(int id, String title, int printingYear, int quantity, List<Author> authors) {
         this.id = id;
         this.title = title;
-        this.printingYear = printingYear;
+        this.publishingYear = printingYear;
         this.quantity = quantity;
         this.authors = authors;
     }
@@ -55,11 +55,11 @@ public class Book {
     }
 
     public int getPrintingYear() {
-        return printingYear;
+        return publishingYear;
     }
 
     public void setPrintingYear(int printingYear) {
-        this.printingYear = printingYear;
+        this.publishingYear = printingYear;
     }
 
     public int getQuantity() {
@@ -80,7 +80,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", printingYear=" + printingYear + ", quantity=" + quantity + ", authors=" + authors + '}';
+        return "Book{" + "id=" + id + ", title=" + title + ", printingYear=" + publishingYear + ", quantity=" + quantity + ", authors=" + authors + '}';
     }
 
     

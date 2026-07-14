@@ -33,10 +33,10 @@ public class BookRepository implements GenericRepository<Book, Integer> {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String title = resultSet.getString("title");
-                int printingYear = resultSet.getInt("printing_year");
+                int publishingYear = resultSet.getInt("publishing_year");
                 int quantity = resultSet.getInt("quantity");
              
-                Book book = new Book(id, title, printingYear, quantity, null);
+                Book book = new Book(id, title, publishingYear, quantity, null);
                 books.add(book);
             }
             
@@ -57,10 +57,10 @@ public class BookRepository implements GenericRepository<Book, Integer> {
         try{
             Connection connection = MyDatabaseConnection.getInstance().getConnection();
 
-            String query = "INSERT INTO book (title, printing_year, quantity) VALUES (?,?,?)";
+            String query = "INSERT INTO book (title, publishing_year, quantity) VALUES (?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, book.getTitle());
-            preparedStatement.setInt(2,book.getPrintingYear());
+            preparedStatement.setInt(2,book.getPublishingYear());
             preparedStatement.setInt(3,book.getQuantity());
             preparedStatement.executeUpdate();
             
@@ -90,10 +90,10 @@ public class BookRepository implements GenericRepository<Book, Integer> {
                 
                 int id = resultSet.getInt("id");
                 String title = resultSet.getString("title");
-                int printingYear = resultSet.getInt("printing_year");
+                int publishingYear = resultSet.getInt("publishing_year");
                 int quantity = resultSet.getInt("quantity");
              
-                Book book = new Book(id, title, printingYear, quantity, null);
+                Book book = new Book(id, title, publishingYear, quantity, null);
                 books.add(book);
             }
             
@@ -132,11 +132,11 @@ public class BookRepository implements GenericRepository<Book, Integer> {
          try { 
             Connection connection = MyDatabaseConnection.getInstance().getConnection();
 
-            String query = "UPDATE book SET title = ?, printing_year = ?, quantity = ? WHERE id = ?";
+            String query = "UPDATE book SET title = ?, publishing_year = ?, quantity = ? WHERE id = ?";
             
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, book.getTitle());
-            preparedStatement.setInt(2,book.getPrintingYear());
+            preparedStatement.setInt(2,book.getPublishingYear());
             preparedStatement.setInt(3,book.getQuantity());
             preparedStatement.setInt(4, book.getId());
             int affectedRows = preparedStatement.executeUpdate();
@@ -211,10 +211,10 @@ public class BookRepository implements GenericRepository<Book, Integer> {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String title = resultSet.getString("title");
-                int printingYear = resultSet.getInt("printing_year");
+                int publishingYear = resultSet.getInt("publishing_year");
                 int quantity = resultSet.getInt("quantity");
              
-                book = new Book(id, title, printingYear, quantity, null);
+                book = new Book(id, title, publishingYear, quantity, null);
             }
             
             resultSet.close();
