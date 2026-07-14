@@ -8,15 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import libraryapp.client.communication.Communication;
 import libraryapp.client.controller.Controller;
 import libraryapp.common.domain.UserProfile;
 import libraryapp.common.exception.UserMessageException;
 import libraryapp.client.session.ApplicationSession;
 import libraryapp.client.ui.form.MainForm;
-import libraryapp.common.transfer.Operation;
-import libraryapp.common.transfer.Request;
-import libraryapp.common.transfer.Response;
 
 
 /**

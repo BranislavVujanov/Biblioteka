@@ -4,7 +4,6 @@
  */
 package libraryapp.client.controller;
 
-import java.io.IOException;
 import java.util.List;
 import libraryapp.client.communication.Communication;
 import libraryapp.common.domain.Book;
