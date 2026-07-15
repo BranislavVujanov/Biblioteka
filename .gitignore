@@ -1,2 +1,16 @@
-/Biblioteka_ServerKlijentApp/LibraryServer/dist/
-/Biblioteka_ServerKlijentApp/LibraryClient/dist/
+# NetBeans build output
+**/build/
+**/dist/
+
+# Compiled Java classes
+*.class
+
+# JAR files
+*.jar
+
+# NetBeans private settings
+**/nbproject/private/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,9 @@
+
+
+
+Build an application for tracking, storing, and updating information about book loans in a library. Both library members and 
+employees log into the system. Members can browse books, while employees manage loans and perform CRUD operations on books and 
+library members. 
+The system stores user ID, name, surname, email, and password. For each book it stores ID, title, author, publishing year, 
+and number of copies. 
+It also records loan date, due date, and whether the loan is still active (book returned or not).
