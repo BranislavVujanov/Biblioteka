@@ -6,6 +6,7 @@ package libraryapp.server.thread;
 
 import java.util.List;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.table.TableModel;
 import libraryapp.server.session.Client;
 import libraryapp.server.session.Session;
@@ -30,12 +31,15 @@ public class ActiveClientsThread extends Thread {
             while (signal && !isInterrupted()) {
                 List<Client> clients = Session.getInstance().getClients();
                 TableModel tableModel = new ActiveClientsTableModel(clients);
-                tblClients.setModel(tableModel);
+//                tblClients.setModel(tableModel);
+                SwingUtilities.invokeLater(() -> {
+                    tblClients.setModel(tableModel);
+                });
 
                 sleep(1000);
             }
         } catch (InterruptedException ex) {
-            System.out.println("Metoda run() klase ActiveClientsThread je prekinuta: " + ex);
+            System.out.println("The run() method of the ActiveClientsThread class has been interrupted: " + ex);
         }
     }
 

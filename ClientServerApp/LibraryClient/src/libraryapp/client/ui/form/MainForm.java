@@ -59,9 +59,9 @@ public class MainForm extends javax.swing.JFrame {
         lblUser.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblUser.setText("jLabel1");
 
-        menuLibrary.setText("Zaduzenja");
+        menuLibrary.setText("Loans");
 
-        LoanMenuItem.setText("Pregled zaduzenja");
+        LoanMenuItem.setText("Loan catalog");
         LoanMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoanMenuItemActionPerformed(evt);
@@ -69,7 +69,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuLibrary.add(LoanMenuItem);
 
-        jMenuItem1.setText(" Novo zaduzenje");
+        jMenuItem1.setText("Make new loans");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -101,7 +101,7 @@ public class MainForm extends javax.swing.JFrame {
         try {
             new LoanSearchForm(this, true).setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Konekija je prekinuta od strane servera!\nProgram ce prekinuti sa radom!", "Communication error", ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The connection was closed by the server!\nThe program will stop running!", "Communication error", ERROR_MESSAGE);
             System.exit(0);
         }
     }//GEN-LAST:event_LoanMenuItemActionPerformed
@@ -110,7 +110,7 @@ public class MainForm extends javax.swing.JFrame {
           try {
             new LoanAddForm(this, true).setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Konekija je prekinuta od strane servera!\nProgram ce prekinuti sa radom!", "Communication error", ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The connection was closed by the server!\nThe program will stop running!", "Communication error", ERROR_MESSAGE);
             System.exit(0);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -136,9 +136,9 @@ public class MainForm extends javax.swing.JFrame {
 
     private void prepareView() {
         UserProfile user = ApplicationSession.getInstance().getLoginUser();
-        lblUser.setText("Ulogovani korisnik: " + user.getFirstName() + " " + user.getLastName() + " , status: " + user.getUserRole());
+        lblUser.setText("Logged-in User: " + user.getFirstName() + " " + user.getLastName() + " , status: " + user.getUserRole());
 
-        //samo zaposleni imaju pristup evidenciji o zaduzenjima, kao i njihovom kreiranju i ponistavanju
+        //Only admins have access to loan records, as well as their creation and cancellation
         if (user.getUserRole().toString().equals("USER")) {
             menuLibrary.setEnabled(false);
         }

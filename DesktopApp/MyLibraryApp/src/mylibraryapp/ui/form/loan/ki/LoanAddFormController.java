@@ -35,6 +35,10 @@ import mylibraryapp.ui.form.user.profile.UserProfileSelectForm;
  */
 public class LoanAddFormController {
     
+    
+    static Book selectedBook;
+    static UserProfile selectedUserProfile;
+    
     public static void filter(JTable tblBook, String query){
         BookTableModel model = (BookTableModel) tblBook.getModel();
         TableRowSorter<BookTableModel> tr = new TableRowSorter<>(model);
@@ -102,7 +106,7 @@ public class LoanAddFormController {
     }
     
     
-    public static UserProfile selectUser(UserProfile selectedUserProfile, JDialog LoanAddForm, JList listUser,
+    public static UserProfile selectUser(JDialog LoanAddForm, JList listUser,
             LoanServiceImpl loanService, JTable tblLoan, JButton btnUpdateLoan, JButton btnMakeLoan){
         try {
             UserProfileSelectForm form = new UserProfileSelectForm(null, true);
@@ -112,7 +116,7 @@ public class LoanAddFormController {
             System.out.println(selectedUserProfile);
             DefaultListModel model = new DefaultListModel();
             if (selectedUserProfile == null) {
-                JOptionPane.showMessageDialog(LoanAddForm, "Niste odabrali clana biblioteke");
+                JOptionPane.showMessageDialog(LoanAddForm, "Please select a library member");
                 return null;
             } else {
                 model.addElement(selectedUserProfile);
@@ -141,15 +145,16 @@ public class LoanAddFormController {
     public static Book selectBook(JTable tblBook,Book selectedBook, JDialog LoanAddForm){
         try {
             String authorName = "";
+            
             int index = tblBook.convertRowIndexToModel​(tblBook.getSelectedRow());
-
-                BookTableModel bookTableModel = (BookTableModel) tblBook.getModel();
-                selectedBook = bookTableModel.getBook(index);
-                List<Author> authors = selectedBook.getAuthors();
-                for (Author author : authors) {
-                    authorName = authorName + author.getFirstName() + " " + author.getLastName() + "\n";
-                }
-                JOptionPane.showMessageDialog(LoanAddForm, authorName, "Autor(i): ", PLAIN_MESSAGE);
+            BookTableModel bookTableModel = (BookTableModel) tblBook.getModel();
+            selectedBook = bookTableModel.getBook(index);
+            
+            List<Author> authors = selectedBook.getAuthors();
+            for (Author author : authors) {
+                authorName = authorName + author.getFirstName() + " " + author.getLastName() + "\n";
+            }
+            JOptionPane.showMessageDialog(LoanAddForm, authorName, "Author(s): ", PLAIN_MESSAGE);
             
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -162,13 +167,13 @@ public class LoanAddFormController {
         System.out.println(selectedUserProfile);
         try {
             if (selectedUserProfile == null) {
-                JOptionPane.showMessageDialog(LoanAddForm, "Niste odabrali clana biblioteke");
+                JOptionPane.showMessageDialog(LoanAddForm, "Please select a library member");
                 return;
             }
             
             int index = tblLoan.getSelectedRow();
             if (index == -1) {
-                JOptionPane.showMessageDialog(LoanAddForm, "Niste odabrali zaduzenje");
+                JOptionPane.showMessageDialog(LoanAddForm, "Please select a loan");
             } else {
                 LoanTableModel loanTableModel = (LoanTableModel) tblLoan.getModel();
                 Loan selectedLoan = loanTableModel.getLoan(index);
@@ -193,7 +198,7 @@ public class LoanAddFormController {
                 }
             }
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(LoanAddForm, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(LoanAddForm, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -201,27 +206,34 @@ public class LoanAddFormController {
     }
 
     public static void makeLoan(UserProfile selectedUserProfile, JDialog LoanAddForm, JTable tblLoan, JTable tblBook,
-            LoanServiceImpl loanService, JButton btnUpdateLoan, JButton btnMakeLoan,Book selectedBook){
+            LoanServiceImpl loanService, JButton btnUpdateLoan, JButton btnMakeLoan){
         try {
 
             if (selectedUserProfile == null) {
-                JOptionPane.showMessageDialog(LoanAddForm, "Niste odabrali clana biblioteke");
+                JOptionPane.showMessageDialog(LoanAddForm, "Please select a library member");
                 return;
             }
-            if (selectedBook == null) {
-                JOptionPane.showMessageDialog(LoanAddForm, "Niste odabrali knjigu");
+            
+            int selectedRow = tblBook.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(LoanAddForm, "Please select a book");
+                return;
+            }
 
-                return;
-            }
+            int index = tblBook.convertRowIndexToModel(selectedRow);
+
+            BookTableModel bookTableModel = (BookTableModel) tblBook.getModel();
+            Book selectedBook = bookTableModel.getBook(index);
+            
             if (selectedBook.getQuantity() < 1) {
-                JOptionPane.showMessageDialog(LoanAddForm, "Nema slobodnih primeraka odabrane knjige");
+                JOptionPane.showMessageDialog(LoanAddForm, "No copies available for the selected book");
                 return;
             }
 
             Date issuingDate = new Date();
-            Date returnDate = new Date(issuingDate.getTime() + 1209600000);
+            Date dueDate = new Date(issuingDate.getTime() + 1209600000);
 
-            Loan loan = new Loan(issuingDate, returnDate, selectedUserProfile, selectedBook, true);
+            Loan loan = new Loan(issuingDate, dueDate, selectedUserProfile, selectedBook, true);
             loanService.add(loan);
 
             prepareBookTable(tblBook);
@@ -239,7 +251,7 @@ public class LoanAddFormController {
             }
 
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(LoanAddForm, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(LoanAddForm, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }

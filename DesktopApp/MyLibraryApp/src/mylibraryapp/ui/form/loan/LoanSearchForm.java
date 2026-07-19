@@ -52,7 +52,7 @@ public class LoanSearchForm extends javax.swing.JDialog {
         btnCurrentLoan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pregled zaduzenja");
+        setTitle("Loan cataog");
 
         tblLoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,7 +67,7 @@ public class LoanSearchForm extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblLoan);
 
-        jLabel4.setText("Pretraga po kljucnoj reci:");
+        jLabel4.setText("Search by keyword:");
 
         txtFilter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -81,9 +81,9 @@ public class LoanSearchForm extends javax.swing.JDialog {
             pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFilterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlFilterLayout.setVerticalGroup(
@@ -96,7 +96,7 @@ public class LoanSearchForm extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        btnCurrentLoan.setText(" Prikazi aktivna zaduzenja");
+        btnCurrentLoan.setText("Show active loans ");
         btnCurrentLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCurrentLoanActionPerformed(evt);
@@ -112,7 +112,7 @@ public class LoanSearchForm extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(pnlFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 449, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 485, Short.MAX_VALUE)
                         .addComponent(btnCurrentLoan))
                     .addComponent(jScrollPane1))
                 .addContainerGap())

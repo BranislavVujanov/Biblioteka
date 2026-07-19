@@ -17,12 +17,12 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuLibrary">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Zaduzenja"/>
+            <Property name="text" type="java.lang.String" value="Loans"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="LoanMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pregled zaduzenja"/>
+                <Property name="text" type="java.lang.String" value="Loan catalog"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoanMenuItemActionPerformed"/>
@@ -30,7 +30,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Novo zaduzenje"/>
+                <Property name="text" type="java.lang.String" value="Make new loans"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>

@@ -47,7 +47,7 @@ public class BookRepository implements GenericRepository<Book, Integer> {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("Greska u izvrsavanju metode getAll() klase BookRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the getAll() method of the BookRepository class" + ex.getMessage());
         }
         
     }
@@ -73,7 +73,7 @@ public class BookRepository implements GenericRepository<Book, Integer> {
             
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("Greska u izvrsavanju metode add() klase BookRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the add() method of the BookRepository class" + ex.getMessage());
         }
     }
 
@@ -104,7 +104,7 @@ public class BookRepository implements GenericRepository<Book, Integer> {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("Greska u izvrsavanju metode findByQuery() klase BookRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the findByQuery() method of the BookRepository class" + ex.getMessage());
         }
     }
 
@@ -123,7 +123,7 @@ public class BookRepository implements GenericRepository<Book, Integer> {
             
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("Greska u izvrsavanju metode connectEntities() klase BookRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the connectEntities() method of the BookRepository class" + ex.getMessage());
         }   
     }
 
@@ -141,11 +141,11 @@ public class BookRepository implements GenericRepository<Book, Integer> {
             preparedStatement.setInt(4, book.getId());
             int affectedRows = preparedStatement.executeUpdate();
             
-            if (affectedRows != 1) throw new UserMessageException("Podaci o knjizi nisu azurirani");
+            if (affectedRows != 1) throw new UserMessageException("Failed to update book details");
             
         } catch (SQLException ex) {
                System.out.println(ex.getMessage());
-               throw new Exception("Greska u izvrsenju metode update() klase BookRepository" + ex.getMessage());
+               throw new Exception("An error occurred while executing the update() method of the BookRepository class" + ex.getMessage());
         }
     }
 
@@ -158,12 +158,12 @@ public class BookRepository implements GenericRepository<Book, Integer> {
             String query = "DELETE FROM book WHERE id= " + book.getId();
             Statement statement = connection.createStatement() ;
             int affectedRows = statement.executeUpdate(query);
-            if (affectedRows != 1) throw new UserMessageException("Podaci o knjizi nisu uspesno obrasini\nPokusajte ponoovo!");
+            if (affectedRows != 1) throw new UserMessageException("Failed to update book details\nTry again!");
              
                 
         } catch (SQLException ex) {
                System.out.println(ex.getMessage());
-               throw new Exception("Greska u izvrsenju metode delete() klase BookRepository" + ex.getMessage());
+               throw new Exception("An error occurred while executing the delete() method of the BookRepository class" + ex.getMessage());
         }
     }
 
@@ -189,13 +189,13 @@ public class BookRepository implements GenericRepository<Book, Integer> {
             resultSet.close();
             preparedStatement.close();
             
-            if (books == null) throw new UserMessageException("U biblioteci ne postoje knjige odabranog autora");
+            if (books == null) throw new UserMessageException("No books found for the selected author");
 
             return books; 
             
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("Greska u izvrsavanju metode findConnectingEntities() klase BookRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the findConnectingEntities() method of the BookRepository class" + ex.getMessage());
         }
     }
 
@@ -220,12 +220,12 @@ public class BookRepository implements GenericRepository<Book, Integer> {
             resultSet.close();
             preparedStatement.close();
              
-            if (book == null) throw new UserMessageException("U biblioteci ne postoja sa zadatim ID");
+            if (book == null) throw new UserMessageException("No books found for this ID");
             
             return book;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("Greska u izvrsavanju metode findById() klase BookRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the findById() method of the BookRepository class" + ex.getMessage());
         }
     }
 
@@ -250,7 +250,7 @@ public class BookRepository implements GenericRepository<Book, Integer> {
          
         } catch (SQLException ex) {
                System.out.println(ex.getMessage());
-               throw new Exception("Greska u izvrsenju metode deleteBooksAuthor() klase BookRepository" + ex.getMessage());
+               throw new Exception("An error occurred while executing the deleteConnectingEntities() method of the BookRepository class" + ex.getMessage());
         }
     }
 

@@ -17,7 +17,7 @@ import mylibraryapp.domain.Loan;
 public class LoanTableModel extends AbstractTableModel{
 
     private List<Loan> loans;
-    private final String[] columns = new String[]{"ID", "Datum zaduzenja", "Datum isteka zaduzenja", "ID knjige", "Naslov", "ID korisnika", "Ime korisnika", "Prezime korisnika", "Akttivno"};
+    private final String[] columns = new String[]{"ID", "Issuing date", "Due Date", "Book ID", "Title", "User ID", "User First Name", "User Last Name", "Active"};
 
     public LoanTableModel(List<Loan> loans) {
         this.loans = loans;
@@ -45,7 +45,7 @@ public class LoanTableModel extends AbstractTableModel{
             case 1:
                 return df.format(loan.getIssuingDate());
             case 2:
-                return df.format(loan.getReturnDate());
+                return df.format(loan.getDueDate());
             case 3:
                 return loan.getBook().getId();
             case 4:

@@ -37,7 +37,7 @@ public class AuthorServiceImpl implements AuthorService {
         List<Author> authors = authorRepository.findByQuery(query);
         
         if (authors.isEmpty()) authorRepository.add(author);
-        else throw new UserMessageException("Autor sa tim imenom vec postoji!");
+        else throw new UserMessageException("An author with this name already exists!");
     }
 
     @Override

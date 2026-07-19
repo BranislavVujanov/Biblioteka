@@ -50,7 +50,7 @@ public class AuthorDisplayForm extends javax.swing.JDialog {
         txtAuthor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pregled knjiga izabranog autora");
+        setTitle("Author catalog");
 
         tblBook.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,7 +70,7 @@ public class AuthorDisplayForm extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblBook);
 
-        jLabel1.setText("Autor:");
+        jLabel1.setText("Author:");
 
         txtAuthor.setEditable(false);
         txtAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

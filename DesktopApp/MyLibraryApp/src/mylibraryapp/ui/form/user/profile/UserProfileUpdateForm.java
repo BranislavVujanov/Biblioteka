@@ -53,21 +53,21 @@ public class UserProfileUpdateForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Izmena podataka o korisniku sistema"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit user profile"));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Korisnik je:");
+        jLabel1.setText("User:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Ime:");
+        jLabel2.setText("First name:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Prezime:");
+        jLabel3.setText("Lastname:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("e-mail:");
 
-        btnChange.setText("Sacuvaj izmene");
+        btnChange.setText("Save changes");
         btnChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeActionPerformed(evt);
@@ -151,9 +151,9 @@ public class UserProfileUpdateForm extends javax.swing.JDialog {
             String lastName = txtLastName.getText().trim();
             String email = txtEmail.getText().trim();
             
-            if (firstName.isEmpty())  throw new UserMessageException("Niste uneli ime korisnika");
-            if (lastName.isEmpty()) throw new UserMessageException("Niste uneli prezime korisnika");
-            if (email.isEmpty())  throw new UserMessageException("Niste uneli e-mail");
+            if (firstName.isEmpty())  throw new UserMessageException("Please enter a user first name");
+            if (lastName.isEmpty()) throw new UserMessageException("Please enter a user last name");
+            if (email.isEmpty())  throw new UserMessageException("Please enter e-mail");
                 //validacija za e-mail
                 int valid = 0;
                 for (int i=0; i<email.length(); i++)
@@ -164,7 +164,7 @@ public class UserProfileUpdateForm extends javax.swing.JDialog {
                         valid = valid + 1;
                         break ;
                     }
-                if (valid != 2) throw new UserMessageException("Nepoznat e-mail format!\ne-mail mora sadrzati sledece simbole: '@' i '.'");
+                if (valid != 2) throw new UserMessageException("Invalid email format!\ne-mail must include the '@' and '.' symbols");
 
             selectedUserProfile.setUserRole(userRole);
             selectedUserProfile.setFirstName(firstName);
@@ -173,12 +173,12 @@ public class UserProfileUpdateForm extends javax.swing.JDialog {
             
             userProfileService.update(selectedUserProfile);
 
-            JOptionPane.showMessageDialog(this, "Uspesno ste izmenili podatke o korisniku sistea");
+            JOptionPane.showMessageDialog(this, "User profile updated successfully");
 
             dispose();
 
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

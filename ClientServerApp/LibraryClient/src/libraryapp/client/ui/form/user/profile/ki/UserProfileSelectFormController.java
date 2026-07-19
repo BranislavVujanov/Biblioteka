@@ -39,7 +39,7 @@ public class UserProfileSelectFormController {
             UserProfileSelectForm.dispose();  
         
         } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(UserProfileSelectForm, "Niste odabrali korisnika");
+            JOptionPane.showMessageDialog(UserProfileSelectForm, "Please select user");
         }
         return selectedUserProfile;
     }

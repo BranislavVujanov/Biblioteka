@@ -68,9 +68,9 @@ public class LoanAddForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Clan biblioteke:");
+        jLabel1.setText("Library member:");
 
-        btnChooseUser.setText("Odaberite clana");
+        btnChooseUser.setText("Select member");
         btnChooseUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChooseUserActionPerformed(evt);
@@ -80,7 +80,7 @@ public class LoanAddForm extends javax.swing.JDialog {
         listUser.setAutoscrolls(false);
         jScrollPane1.setViewportView(listUser);
 
-        jLabel5.setText("Pretraga knjiga po kljucnoj reci:");
+        jLabel5.setText("Search by keyword:");
 
         txtFilter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -94,8 +94,8 @@ public class LoanAddForm extends javax.swing.JDialog {
             pnlFilter1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFilter1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(txtFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -141,18 +141,18 @@ public class LoanAddForm extends javax.swing.JDialog {
         ));
         jScrollPane4.setViewportView(tblLoan);
 
-        jLabel2.setText("Trenutna zaduzenja:");
+        jLabel2.setText("Current loans:");
 
-        jLabel3.setText("Prikaz knjiga: odaberite knjigu za pravljnje novog zaduzenja");
+        jLabel3.setText("Book display: Select a book to create a new loan");
 
-        btnUpdateLoan.setText(" Razduzi");
+        btnUpdateLoan.setText("Return");
         btnUpdateLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateLoanActionPerformed(evt);
             }
         });
 
-        btnMakeLoan.setText("Zaduzi");
+        btnMakeLoan.setText("Issue loan");
         btnMakeLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMakeLoanActionPerformed(evt);
@@ -160,7 +160,7 @@ public class LoanAddForm extends javax.swing.JDialog {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel4.setText("Dozvoljeno je 5 zaduzenja po clanu biblioteke!");
+        jLabel4.setText("Maximum of 5 active loans allowed per member!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,7 +231,7 @@ public class LoanAddForm extends javax.swing.JDialog {
 
     private void btnChooseUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseUserActionPerformed
 
-        selectedUserProfile = LoanAddFormController.selectUser(selectedUserProfile, this, listUser, tblLoan, btnUpdateLoan, btnMakeLoan);
+        selectedUserProfile = LoanAddFormController.selectUser( this, listUser, tblLoan, btnUpdateLoan, btnMakeLoan);
     }//GEN-LAST:event_btnChooseUserActionPerformed
 
     private void txtFilterKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterKeyReleased
@@ -241,7 +241,7 @@ public class LoanAddForm extends javax.swing.JDialog {
 
     private void tblBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBookMouseClicked
 
-        selectedBook = (Book) LoanAddFormController.selectBook(tblBook, selectedBook, this);
+        selectedBook = (Book) LoanAddFormController.selectBook(tblBook, this);
     }//GEN-LAST:event_tblBookMouseClicked
 
     private void btnUpdateLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateLoanActionPerformed
@@ -251,7 +251,7 @@ public class LoanAddForm extends javax.swing.JDialog {
 
     private void btnMakeLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeLoanActionPerformed
     
-        LoanAddFormController.makeLoan(selectedUserProfile, this, tblLoan, tblBook, btnUpdateLoan, btnMakeLoan, selectedBook);
+        LoanAddFormController.makeLoan(selectedUserProfile, this, tblLoan, tblBook, btnUpdateLoan, btnMakeLoan);
     }//GEN-LAST:event_btnMakeLoanActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -50,7 +50,7 @@ public class AuthorEditForm extends javax.swing.JDialog {
         txtFilter = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pregled svih autora");
+        setTitle("Edit author");
 
         tblAuthor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,14 +67,14 @@ public class AuthorEditForm extends javax.swing.JDialog {
         tblAuthor.setAlignmentY(0.0F);
         jScrollPane1.setViewportView(tblAuthor);
 
-        btnChange.setText("Izmeni podatke o autoru");
+        btnChange.setText("Change author details");
         btnChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Pretraga po kljucnoj reci:");
+        jLabel1.setText("Search by keyword:");
 
         txtFilter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -88,8 +88,8 @@ public class AuthorEditForm extends javax.swing.JDialog {
             pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFilterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(txtFilter)
                 .addContainerGap())
         );
@@ -145,7 +145,7 @@ public class AuthorEditForm extends javax.swing.JDialog {
             prepareView();
 
         } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(this, "Niste selektovali autora", "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No author selected", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnChangeActionPerformed
 

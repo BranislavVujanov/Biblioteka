@@ -53,6 +53,7 @@ public class AuthorSearchForm extends javax.swing.JDialog {
         btnDisplay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Author catalog");
 
         tblAuthor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,7 +70,7 @@ public class AuthorSearchForm extends javax.swing.JDialog {
         tblAuthor.setAlignmentY(0.0F);
         jScrollPane1.setViewportView(tblAuthor);
 
-        jLabel1.setText("Pretraga po kljucnoj reci:");
+        jLabel1.setText("Search by keyword:");
 
         txtFilter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -98,7 +99,7 @@ public class AuthorSearchForm extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        btnDisplay.setText("Prikazi sve knjige odabranog autora");
+        btnDisplay.setText("Show Books by Author");
         btnDisplay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDisplayActionPerformed(evt);
@@ -148,14 +149,14 @@ public class AuthorSearchForm extends javax.swing.JDialog {
             BookService bookService = new BookServiceImpl();
             List<Book> books = bookService.findBookByAuthor(selectedAuthor.getId());
             if (books.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Nazalost trenutno nemamo ni jednu knjigu odabranog autora");
+                JOptionPane.showMessageDialog(this, "No books found for the selected author");
             } else {
                 new AuthorDisplayForm(null, true, selectedAuthor).setVisible(true);
                 prepareView();
             }
 
         } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(this, "Niste selektovali autora", "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No author selected", "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

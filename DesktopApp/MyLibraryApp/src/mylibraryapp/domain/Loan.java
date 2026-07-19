@@ -14,7 +14,7 @@ public class Loan {
     
     private int id;
     private Date issuingDate;
-    private Date returnDate;
+    private Date dueDate;
     private UserProfile userProfile;
     private Book book;
     boolean valid;
@@ -22,18 +22,18 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan( Date issuingDate, Date returnDate, UserProfile userProfile, Book book, boolean valid) {
+    public Loan( Date issuingDate, Date dueDate, UserProfile userProfile, Book book, boolean valid) {
         this.issuingDate = issuingDate;
-        this.returnDate = returnDate;
+        this.dueDate = dueDate;
         this.userProfile = userProfile;
         this.book = book;
         this.valid = valid;
     }
 
-    public Loan(int id, Date issuingDate, Date returnDate, UserProfile userProfile, Book book, boolean valid) {
+    public Loan(int id, Date issuingDate, Date dueDate, UserProfile userProfile, Book book, boolean valid) {
         this.id = id;
         this.issuingDate = issuingDate;
-        this.returnDate = returnDate;
+        this.dueDate = dueDate;
         this.userProfile = userProfile;
         this.book = book;
         this.valid = valid;
@@ -57,12 +57,12 @@ public class Loan {
         this.issuingDate = issuingDate;
     }
 
-    public Date getReturnDate() {
-        return returnDate;
+    public Date getDueDate() {
+        return dueDate;
     }
 
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
     }
 
     public UserProfile getUserProfile() {

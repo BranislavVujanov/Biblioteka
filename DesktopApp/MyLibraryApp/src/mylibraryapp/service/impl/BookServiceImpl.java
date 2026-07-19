@@ -58,9 +58,9 @@ public class BookServiceImpl implements BookService {
         List<Book> books = bookRepository.findByQuery(query);
         
         if (books.isEmpty()) bookRepository.add(book);
-        else throw new UserMessageException("Ova knjiga vec postoji u biblioteci!");
+        else throw new UserMessageException("This book already exists!");
         
-        //povezi autore sa knjigom
+        //link author and book
         List<Author> authors = book.getAuthors();
             for (Author author : authors) {
                 int bookId = book.getId();
@@ -71,11 +71,11 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void update(Book book) throws Exception {
-        //update knjige
+        //book update
         bookRepository.update(book);
-        //izbrisi knjigu i sve njene predjasnje autore iz tabele writing
+        //delete book and its author(s) from tabel 'writing'
         bookRepository.deleteConnectingEntities(book);  
-        //povezi knjigu sa novim autorima u tabeli writing
+        //link book and its author(s) in the tabel 'writing'
         List<Author> authors = book.getAuthors();
             for (Author author : authors) {
                 bookRepository.connectEntities(book.getId(), author.getId());
@@ -84,9 +84,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void delete(Book book) throws Exception {
-        //proveri da li korisnik ima trenutnih zaduzenja
+        //check if user has current loans
         String query = """
-                       SELECT l.id, l.issuing_date, l.return_date, l.valid, l.user_profile_id, 
+                       SELECT l.id, l.issuing_date, l.due_date, l.valid, l.user_profile_id, 
                                                up.first_name, up.last_name, up.email, up.user_role,l.book_id, b.title, b.publishing_year, b.quantity
                                                FROM loan l
                                                JOIN user_profile up ON l.user_profile_id = up.id
@@ -94,7 +94,7 @@ public class BookServiceImpl implements BookService {
                                                WHERE valid = 1 AND book_id = """ + book.getId();
         List <Loan> loans = loanRepository.findByQuery(query);
         if (loans.isEmpty()) bookRepository.delete(book);
-        else throw new UserMessageException("Ova knjiga je trenutno zaduzena!\nTek nakon razduzivanja bice omoguceno brisanje knjige");
+        else throw new UserMessageException("This book is currently borrowed!\nDeleting this book will only be enabled once it is returned");
     }
 
     @Override

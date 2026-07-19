@@ -120,7 +120,7 @@ public class ProcessClientRequests extends Thread {
                 sender.writeObject(response);
 
             } catch (Exception ex) {
-                System.out.println("Metoda run() klase ProcessClientRequests je prekinuta via Exception: " + ex);
+                System.out.println("The run() method of the ProcessClientRequests class has been interrupted via Exception: " + ex);
             }
         }
         System.out.println("ProcessClient " + client.getClientName()+" Requests Thread End");
@@ -132,6 +132,5 @@ public class ProcessClientRequests extends Thread {
         socket.close();
     }
 
-   
     
 }

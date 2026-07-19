@@ -60,28 +60,28 @@ private BookService bookService;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        pnlBook.setBorder(javax.swing.BorderFactory.createTitledBorder("Dodaj knjigu"));
+        pnlBook.setBorder(javax.swing.BorderFactory.createTitledBorder("Add book"));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Naslov:");
+        jLabel1.setText("Title:");
 
         jhu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jhu.setText("Godina izdanja:");
+        jhu.setText("Publshing year:");
 
         sdfsd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        sdfsd.setText("Broj primeraka:");
+        sdfsd.setText("Number of copies");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Autor(i):");
+        jLabel4.setText("Author(s):");
 
-        btnAuthorSelect.setText("Izaberi iz tabele");
+        btnAuthorSelect.setText("Select from table");
         btnAuthorSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAuthorSelectActionPerformed(evt);
             }
         });
 
-        btnSave.setText("Sacuvaj");
+        btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -91,7 +91,7 @@ private BookService bookService;
         listAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(listAuthor);
 
-        btnDeleteAuthor.setText("Izbrisi autora");
+        btnDeleteAuthor.setText("Remove author");
         btnDeleteAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteAuthorActionPerformed(evt);
@@ -183,7 +183,7 @@ private BookService bookService;
         DefaultListModel model = new DefaultListModel();
         if (author != null) {  
             if (selectedAuthors.contains(author)) {
-                JOptionPane.showMessageDialog(this, "Izabrali ste dvaput istog autora!");
+                JOptionPane.showMessageDialog(this, "This author is already selected!");
                 for (Author selectedAuthor : selectedAuthors) {
                      model.addElement(selectedAuthor);
                 } 
@@ -199,26 +199,26 @@ private BookService bookService;
     }//GEN-LAST:event_btnAuthorSelectActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String error = "";
+        String invalidField = "";
         try {
             String title = txtTitle.getText().trim();
-            if (title.isEmpty()) throw new UserMessageException("Niste uneli naslov knjige");
+            if (title.isEmpty()) throw new UserMessageException("Please enter a book title");
             
-            error = " za godinu izdanja";
+            invalidField = " for the publication year";
             int printingYear = Integer.parseInt(txtPrintingYear.getText().trim());            
             int currentYear = LocalDate.now().getYear();
-            if (printingYear <1440 || printingYear > currentYear) throw new UserMessageException("Pogresan unos godine!\nGodina mora biti izmedju 1440 i trenutne godine");
+            if (printingYear <1440 || printingYear > currentYear) throw new UserMessageException("Invalid year!\nPlease enter a year between 1440 and current year");
             
-            error = " primeraka";
+            invalidField = " of copies";
             int quantity = Integer.parseInt(txtQantity.getText().trim());
-            if (quantity < 0) throw new UserMessageException("Pogresan unos!\nBroj primeraka mora biti veci od 0");
+            if (quantity < 0) throw new UserMessageException("Invalid input!\nPlease enter a number greater than 0");
             
             DefaultListModel model = (DefaultListModel)listAuthor.getModel();
-            if (model.getSize() == 0) throw new UserMessageException("Niste uneli autora");
+            if (model.getSize() == 0) throw new UserMessageException("Please enter an author name");
             
             Book book = new Book(title, printingYear, quantity, selectedAuthors);
             bookService.add(book);
-            JOptionPane.showMessageDialog(this, "Uspesno ste sacuvali knjigu");
+            JOptionPane.showMessageDialog(this, "Book added successfully");
             
             txtTitle.setText("");
             txtPrintingYear.setText("");
@@ -226,11 +226,10 @@ private BookService bookService;
             selectedAuthors.clear();
             model.removeAllElements();
             
-            
         } catch (NumberFormatException numberFormatException) {
-            JOptionPane.showMessageDialog(this, "Niste uneli broj" + error, "Greska!", JOptionPane.ERROR_MESSAGE);  
+            JOptionPane.showMessageDialog(this, "Please enter a valid number" + invalidField, "Error!", JOptionPane.ERROR_MESSAGE);  
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -245,7 +244,7 @@ private BookService bookService;
                 model.removeElementAt(index);
                 selectedAuthors.remove(author);
             } else {
-                JOptionPane.showMessageDialog(this, "Niste izabrali autora!");
+                JOptionPane.showMessageDialog(this, "Plese select author");
             }
         
 

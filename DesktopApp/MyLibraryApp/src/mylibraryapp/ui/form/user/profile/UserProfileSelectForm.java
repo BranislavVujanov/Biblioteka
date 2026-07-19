@@ -55,7 +55,7 @@ public class UserProfileSelectForm extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblUserProfile);
 
-        jLabel4.setText("Pretraga po kljucnoj reci:");
+        jLabel4.setText("Search by keyword:");
 
         txtFilter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -63,7 +63,7 @@ public class UserProfileSelectForm extends javax.swing.JDialog {
             }
         });
 
-        btnChoose.setText("Izaberi korisnika");
+        btnChoose.setText("Select user");
         btnChoose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChooseActionPerformed(evt);

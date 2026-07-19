@@ -45,7 +45,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Izmena podataka o knizi"/>
+            <TitledBorder title="Edit book details"/>
           </Border>
         </Property>
       </Properties>
@@ -142,7 +142,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Naslov:"/>
+            <Property name="text" type="java.lang.String" value="Title:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jhu">
@@ -150,7 +150,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Godina izdanja:"/>
+            <Property name="text" type="java.lang.String" value="Publishing year"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="sdfsd">
@@ -158,7 +158,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Broj primeraka:"/>
+            <Property name="text" type="java.lang.String" value="Number of copies"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -166,7 +166,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Autor(i):"/>
+            <Property name="text" type="java.lang.String" value="Author(s):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTitle">
@@ -177,7 +177,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSave">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sacuvaj izmene"/>
+            <Property name="text" type="java.lang.String" value="Save changes"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
@@ -220,7 +220,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnDeleteBook">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Izbrisi knjigu"/>
+            <Property name="text" type="java.lang.String" value="Delete book"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteBookActionPerformed"/>
@@ -228,7 +228,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnAddAuthor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Dodaj autora "/>
+            <Property name="text" type="java.lang.String" value="Add author"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddAuthorActionPerformed"/>
@@ -236,7 +236,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnDeleteAuthor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Izbrisi autora"/>
+            <Property name="text" type="java.lang.String" value="Delete author"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteAuthorActionPerformed"/>

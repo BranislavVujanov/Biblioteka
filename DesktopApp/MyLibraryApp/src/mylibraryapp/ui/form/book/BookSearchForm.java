@@ -53,7 +53,7 @@ public class BookSearchForm extends javax.swing.JDialog {
         txtFilter3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pregled knjiga");
+        setTitle("Book catalog");
 
         tblBook.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,7 +73,7 @@ public class BookSearchForm extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblBook);
 
-        jLabel4.setText("Pretraga po kljucnoj reci:");
+        jLabel4.setText("Search by keyword:");
 
         txtFilter3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -141,7 +141,7 @@ public class BookSearchForm extends javax.swing.JDialog {
 
                     authorName = authorName + author.getFirstName() +" "+ author.getLastName() + "\n";
                 }
-                JOptionPane.showMessageDialog(this, authorName, "Autor(i): ", PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, authorName, "Author(s): ", PLAIN_MESSAGE);
 
             }
         } catch (Exception e) {

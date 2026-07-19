@@ -72,21 +72,21 @@ public class AuthorSelectForm extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblAuthor);
 
-        btnSelect.setText("Izaberi autora");
+        btnSelect.setText("Select author");
         btnSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectActionPerformed(evt);
             }
         });
 
-        btnAdd.setText("Unesi novog autora");
+        btnAdd.setText("Add New Author");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Pretraga po kljucnoj reci:");
+        jLabel1.setText("Search by keyword");
 
         txtFilter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -153,7 +153,7 @@ public class AuthorSelectForm extends javax.swing.JDialog {
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         int row = tblAuthor.convertRowIndexToModel​(tblAuthor.getSelectedRow());
         if (row == -1) 
-            JOptionPane.showMessageDialog(this, "Niste selektovali autora", "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No author selected", "Error!", JOptionPane.ERROR_MESSAGE);
         else {
             AuthorTableModel authorTableModel = (AuthorTableModel) tblAuthor.getModel();
             selectedAuthor = authorTableModel.getAuthor(row);

@@ -5,8 +5,10 @@
 # Compiled Java classes
 *.class
 
-# JAR files
+# JAR files 
 *.jar
+!DesktopApp/lib/*.jar
+!ClientServerApp/lib/*.jar
 
 # NetBeans private settings
 **/nbproject/private/

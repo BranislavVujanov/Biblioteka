@@ -60,7 +60,7 @@ public class BookEditForm extends javax.swing.JDialog {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pegled svih knjiga");
+        setTitle("Edit book");
 
         tblBook.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,14 +80,14 @@ public class BookEditForm extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblBook);
 
-        btnChange.setText("Izmeni podatke o knjizi");
+        btnChange.setText("Update book details");
         btnChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Pretraga po kljucnoj reci:");
+        jLabel4.setText("Search by keyword:");
 
         txtFilter3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -116,7 +116,7 @@ public class BookEditForm extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        btnDelete.setText("Obrisi knjigu");
+        btnDelete.setText("Delete book");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -170,7 +170,7 @@ public class BookEditForm extends javax.swing.JDialog {
             }
 
         } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(this, authorName, "Autor(i): ", PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, authorName, "Author(s): ", PLAIN_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -178,7 +178,7 @@ public class BookEditForm extends javax.swing.JDialog {
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
         if (selectedBook == null)
-            JOptionPane.showMessageDialog(this, "Niste odabrali knjigu");
+            JOptionPane.showMessageDialog(this, "Please select book");
         else {
             new BookUpdateForm(null, true, selectedBook).setVisible(true);
 
@@ -194,9 +194,9 @@ public class BookEditForm extends javax.swing.JDialog {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         try {
             if (selectedBook == null) {
-                JOptionPane.showMessageDialog(this, "Niste odabrali knjigu");
+                JOptionPane.showMessageDialog(this, "Please select book");
             } else {
-                int input = JOptionPane.showConfirmDialog((Component) this, "Kliknite OK ukoliko ste sigurni\nda zelite da obrisete knjigu", "Paznja!", JOptionPane.DEFAULT_OPTION);
+                int input = JOptionPane.showConfirmDialog((Component) this, "Click OK if you are sure\nyou want to delete the book", "Warning!", JOptionPane.DEFAULT_OPTION);
 
                 if (input == 0) {
                     bookService.delete(selectedBook);
@@ -205,7 +205,7 @@ public class BookEditForm extends javax.swing.JDialog {
                 }
             }
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }

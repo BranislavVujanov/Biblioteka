@@ -64,21 +64,21 @@ public class BookUpdateForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        pnlBook.setBorder(javax.swing.BorderFactory.createTitledBorder("Izmena podataka o knizi"));
+        pnlBook.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit book details"));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Naslov:");
+        jLabel1.setText("Title:");
 
         jhu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jhu.setText("Godina izdanja:");
+        jhu.setText("Publishing year");
 
         sdfsd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        sdfsd.setText("Broj primeraka:");
+        sdfsd.setText("Number of copies");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Autor(i):");
+        jLabel4.setText("Author(s):");
 
-        btnSave.setText("Sacuvaj izmene");
+        btnSave.setText("Save changes");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -93,21 +93,21 @@ public class BookUpdateForm extends javax.swing.JDialog {
 
         txtId.setEditable(false);
 
-        btnDeleteBook.setText("Izbrisi knjigu");
+        btnDeleteBook.setText("Delete book");
         btnDeleteBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteBookActionPerformed(evt);
             }
         });
 
-        btnAddAuthor.setText("Dodaj autora ");
+        btnAddAuthor.setText("Add author");
         btnAddAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddAuthorActionPerformed(evt);
             }
         });
 
-        btnDeleteAuthor.setText("Izbrisi autora");
+        btnDeleteAuthor.setText("Delete author");
         btnDeleteAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteAuthorActionPerformed(evt);
@@ -203,23 +203,23 @@ public class BookUpdateForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String error = "";
+        String invalidField = "";
         try {
             String title = txtTitle.getText().trim();
-            if (title.isEmpty()) throw new UserMessageException("Niste uneli naslov knjige");
+            if (title.isEmpty()) throw new UserMessageException("Please enter a book title");
 
-            error = " za godinu izdanja";
+            invalidField = " for the publication year";
             int printingYear = Integer.parseInt(txtPrintingYear.getText().trim());
             int currentYear = LocalDate.now().getYear();
-            if (printingYear <1440 || printingYear > currentYear) throw new UserMessageException("Pogresan unos godine!\nGodina mora biti izmedju 1440 i trenutne godine");
+            if (printingYear <1440 || printingYear > currentYear) throw new UserMessageException("Invalid year!\nPlease enter a year between 1440 and current year");
 
-            error = " primeraka";
+            invalidField = " of copies";
             int quantity = Integer.parseInt(txtQantity.getText().trim());
-            if (quantity < 0) throw new UserMessageException("Pogresan unos!\nBroj primeraka mora biti veci od 0");
+            if (quantity < 0) throw new UserMessageException("Invalid input!\nPlease enter a number greater than 0");
 
 //            DefaultListModel model = (DefaultListModel) listAuthor.getModel();
 //            if (model.getSize() == 0) throw new UserMessageException("Niste uneli autora");
-            if (selectedAuthors.isEmpty()) throw new UserMessageException("Niste uneli autora");
+            if (selectedAuthors.isEmpty()) throw new UserMessageException("Please enter an author name");
 
             selectedBook.setTitle(title);
             selectedBook.setPublishingYear(printingYear);
@@ -228,17 +228,16 @@ public class BookUpdateForm extends javax.swing.JDialog {
             System.out.println(selectedBook);
             bookService.update(selectedBook);
             
-            JOptionPane.showMessageDialog(this, "Uspesno ste izmenili podatke o knjizi");
+            JOptionPane.showMessageDialog(this, "Book updated successfully");
             
             selectedAuthors.clear();
             dispose();
 
-
         } catch (NumberFormatException numberFormatException) {
-            JOptionPane.showMessageDialog(this, "Niste uneli broj" + error, "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please enter a valid number" + invalidField, "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (UserMessageException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -270,7 +269,7 @@ public class BookUpdateForm extends javax.swing.JDialog {
                 
                 selectedAuthors.remove(author);
             } else {
-                JOptionPane.showMessageDialog(this, "Niste izabrali autora!");
+                JOptionPane.showMessageDialog(this, "Plese select author");
             }
 
         } catch (Exception ex) {
@@ -282,7 +281,7 @@ public class BookUpdateForm extends javax.swing.JDialog {
 
         try {         
             bookService.delete(selectedBook);
-            JOptionPane.showMessageDialog(this, "Knjiga '" + selectedBook.getTitle() +"' je obrisana");
+            JOptionPane.showMessageDialog(this, "Book '" + selectedBook.getTitle() +"' is deleted");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
@@ -312,7 +311,7 @@ public class BookUpdateForm extends javax.swing.JDialog {
 
     private void prepareView() {
         if (selectedBook == null){
-            JOptionPane.showMessageDialog(this, "Nije selektovana knjiga!");
+            JOptionPane.showMessageDialog(this, "Please select a book");
             dispose();
         }
         else{

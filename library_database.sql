@@ -29,28 +29,30 @@ CREATE TABLE `author` (
 
 /*Data for the table `author` */
 
-insert  into `author`(`id`,`first_name`,`last_name`) values 
+/*Data for the table `author` */
+
+insert into `author`(`id`,`first_name`,`last_name`) values 
 (1,'Jakov','Ignjatovic'),
-(2,'Perl','Bak'),
-(3,'Ernest','Hemingvej'),
-(4,'Aristotel',''),
-(5,'Imanuel','Kant'),
-(6,'Dante','Aligijeri'),
-(7,'Stiven','King'),
-(8,'Piter','Straub'),
-(9,'Platon',''),
+(2,'Pearl','Buck'),
+(3,'Ernest','Hemingway'),
+(4,'Aristotle',''),
+(5,'Immanuel','Kant'),
+(6,'Dante','Alighieri'),
+(7,'Stephen','King'),
+(8,'Peter','Straub'),
+(9,'Plato',''),
 (10,'Simo','Matavulj'),
-(12,'Rej','Bredberi'),
+(12,'Ray','Bradbury'),
 (14,'Jovan','Sterija Popovic'),
 (15,'Petar','Kocic'),
-(17,'Sofokle',''),
-(18,'Aristofan',''),
+(17,'Sophocles',''),
+(18,'Aristophanes',''),
 (19,'Branislav','Nusic'),
-(20,'Gabrijel','Garsija Markes'),
-(21,'Marko','Aurelije'),
-(22,'Zan','Pol Sartr'),
-(23,'Dzordz','Orvel'),
-(24,'Euripid','');
+(20,'Gabriel','Garcia Marquez'),
+(21,'Marcus','Aurelius'),
+(22,'Jean-Paul','Sartre'),
+(23,'George','Orwell'),
+(24,'Euripides','');
 
 /*Table structure for table `book` */
 
@@ -59,42 +61,44 @@ DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
-  `printing_year` int unsigned DEFAULT NULL,
+  `publishing_year` int unsigned DEFAULT NULL,
   `quantity` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `book` */
 
-insert  into `book`(`id`,`title`,`printing_year`,`quantity`) values 
-(1,'Za kim zvono zvoni',1961,6),
-(2,'Sunce se ponovo radja',2004,1),
-(3,'Veciti mladozenja',1895,4),
-(4,'Obecanje',1991,1),
-(5,'Dobra zemlja',1991,2),
-(9,'Gozba',2018,1),
-(10,'Metafizika',1979,4),
-(11,'Farenhajt 451',2015,8),
-(17,'Nikomahova etika',2003,3),
-(18,'Kritika cistog uma',1978,4),
-(19,'Pokondirena tikva',1989,11),
-(21,'Kritika praktickog uma',1990,3),
-(22,'Talisman',2019,3),
-(25,'Boka i Bokelji',2001,1),
-(26,'Antigona',2002,23),
-(29,'Kritika moci sudjenja',1974,0),
-(31,'Pakao',2001,5),
-(32,'Zla zena',1989,9),
-(34,'Autobiografija',1946,12),
-(35,'Sto godina samoce',2009,6),
-(36,'Zao cas',2003,9),
-(37,'Meditacije',1899,2),
-(41,'Hipolit',1967,0),
-(42,'Sumnjivo lice',1987,5),
-(43,'Ozaloscena porodica',1934,4),
-(44,'1984',1976,14),
-(45,'Zivotinjska Farma',2000,0),
-(46,'Tvrdica',1953,11);
+/*Data for the table `book` */
+
+insert into `book`(`id`,`title`,`publishing_year`,`quantity`) values 
+(1,'For Whom the Bell Tolls',1961,6),
+(2,'The Sun Also Rises',2004,1),
+(3,'The Eternal Bridegroom',1895,4),
+(4,'The Promise',1991,1),
+(5,'The Good Earth',1991,2),
+(9,'Symposium',2018,1),
+(10,'Metaphysics',1979,4),
+(11,'Fahrenheit 451',2015,8),
+(17,'Nicomachean Ethics',2003,3),
+(18,'Critique of Pure Reason',1978,4),
+(19,'The Conceited Pumpkin',1989,11),
+(21,'Critique of Practical Reason',1990,3),
+(22,'The Talisman',2019,3),
+(25,'Boka and the Boka Bay Region',2001,1),
+(26,'Antigone',2002,23),
+(29,'Critique of Judgment',1974,0),
+(31,'Inferno',2001,5),
+(32,'The Evil Woman',1989,9),
+(34,'Autobiography',1946,12),
+(35,'One Hundred Years of Solitude',2009,6),
+(36,'In Evil Hour',2003,9),
+(37,'Meditations',1899,2),
+(41,'Hippolytus',1967,0),
+(42,'The Suspicious Person',1987,5),
+(43,'The Bereaved Family',1934,4),
+(44,'Nineteen Eighty-Four',1976,14),
+(45,'Animal Farm',2000,0),
+(46,'The Miser',1953,11);
 
 /*Table structure for table `loan` */
 
@@ -103,7 +107,7 @@ DROP TABLE IF EXISTS `loan`;
 CREATE TABLE `loan` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `issuing_date` date NOT NULL,
-  `return_date` date NOT NULL,
+  `due_date` date NOT NULL,
   `user_profile_id` int unsigned DEFAULT NULL,
   `book_id` int unsigned DEFAULT NULL,
   `valid` tinyint(1) DEFAULT NULL,
@@ -116,7 +120,7 @@ CREATE TABLE `loan` (
 
 /*Data for the table `loan` */
 
-insert  into `loan`(`id`,`issuing_date`,`return_date`,`user_profile_id`,`book_id`,`valid`) values 
+insert  into `loan`(`id`,`issuing_date`,`due_date`,`user_profile_id`,`book_id`,`valid`) values 
 (1000001,'2025-04-26','2025-05-10',100000,1,0),
 (1000002,'2025-04-01','2025-04-15',100002,11,0),
 (1001012,'2025-03-12','2025-03-26',100004,18,0),
@@ -193,9 +197,10 @@ CREATE TABLE `user_profile` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `user_role` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`,`email`)
+  PRIMARY KEY(id),
+  UNIQUE(email)
 ) ENGINE=InnoDB AUTO_INCREMENT=100019 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `user_profile` */

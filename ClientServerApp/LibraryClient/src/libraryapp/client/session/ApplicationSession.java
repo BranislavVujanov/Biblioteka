@@ -14,11 +14,11 @@ public class ApplicationSession {
     
     private static ApplicationSession instance;
     
-    private UserProfile loginUser; //user prijavljen na sistem
+    private UserProfile loginUser; //logged in user
     
     
     private ApplicationSession(){
-        System.out.println("Kreian objekat klase ApplicationSession");
+        System.out.println("An object of the ApplicationSession class has been created");
     }
     
     public static ApplicationSession getInstance(){

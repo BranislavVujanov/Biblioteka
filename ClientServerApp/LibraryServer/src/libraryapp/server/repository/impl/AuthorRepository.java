@@ -43,7 +43,7 @@ public class AuthorRepository implements GenericRepository<Author, Integer>{
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode getAll() klase AuthorRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the getAll() method of the AuthorRepository class" + ex.getMessage());
         }
     }
 
@@ -67,7 +67,7 @@ public class AuthorRepository implements GenericRepository<Author, Integer>{
                         
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode add() klase AuthorRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the add() method of the AuthorRepository class" + ex.getMessage());
         }
     }
 
@@ -93,7 +93,7 @@ public class AuthorRepository implements GenericRepository<Author, Integer>{
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode findByQuery() klase AuthorRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the findByQuery() method of the AuthorRepository class" + ex.getMessage());
         }
     }
 
@@ -113,12 +113,12 @@ public class AuthorRepository implements GenericRepository<Author, Integer>{
                             "WHERE id = "+ author.getId();
             Statement statement = connection.createStatement() ;
             int affectedRows = statement.executeUpdate(query);
-            if (affectedRows != 1) throw new UserMessageException("Podaci o autoru nisu uspesno izmenjeni!");
+            if (affectedRows != 1) throw new UserMessageException("Failed to update author details!");
              
                 
         } catch (SQLException ex) {
                System.out.println(ex.getMessage());
-               throw new Exception("Greska u izvrsenju metode update() klase CountryRepository" + ex.getMessage());
+               throw new Exception("An error occurred while executing the update() method of the AuthorRepository class" + ex.getMessage());
         }
     }
 

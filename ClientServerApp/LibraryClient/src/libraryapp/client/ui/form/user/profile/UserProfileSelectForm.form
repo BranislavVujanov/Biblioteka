@@ -100,7 +100,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pretraga po kljucnoj reci:"/>
+            <Property name="text" type="java.lang.String" value="Search by keyword:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFilter">
@@ -110,7 +110,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnChoose">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Izaberi korisnika"/>
+            <Property name="text" type="java.lang.String" value="Select user"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChooseActionPerformed"/>

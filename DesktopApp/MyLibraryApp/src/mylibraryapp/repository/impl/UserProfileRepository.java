@@ -54,7 +54,7 @@ public class UserProfileRepository implements GenericRepository<UserProfile, Int
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode getAll() klase UserProfileRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the getAll() method of the UserProfileRepository class" + ex.getMessage());
         }
     }
 
@@ -82,7 +82,7 @@ public class UserProfileRepository implements GenericRepository<UserProfile, Int
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode add() klase UserProfileRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the add() method of the UserProfileRepository class" + ex.getMessage());
         }
     }
 
@@ -110,7 +110,7 @@ public class UserProfileRepository implements GenericRepository<UserProfile, Int
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode findByQuery() klase UserProfileRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the findByQuery() method of the UserProfileRepository class" + ex.getMessage());
         }
     }
 
@@ -131,12 +131,12 @@ public class UserProfileRepository implements GenericRepository<UserProfile, Int
             Statement statement = connection.createStatement();
             int affectedRows = statement.executeUpdate(query);
             if (affectedRows != 1) {
-                throw new UserMessageException("Podaci o korisniku nisu uspesno izmenjeni!");
+                throw new UserMessageException("Failed to update user profile details!");
             }
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsenju metode update() klase UserProfileRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the update() method of the UserProfileRepository class" + ex.getMessage());
         }
     }
 
@@ -149,12 +149,12 @@ public class UserProfileRepository implements GenericRepository<UserProfile, Int
             Statement statement = connection.createStatement();
             int affectedRows = statement.executeUpdate(query);
             if (affectedRows != 1) {
-                throw new UserMessageException("Podaci o korisniku nisu uspesno obrasini\nPokusajte ponoovo!");
+                throw new UserMessageException("Failed to delete user\nTry again!");
             }
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsenju metode delete() klase UserProfileRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the delete() method of the UserProfileRepository class" + ex.getMessage());
         }
     }
 

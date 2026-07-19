@@ -39,9 +39,9 @@ public class UserProfileServiceImpl implements UserProfileService {
                 + "FROM user_profile\n"
                 + "WHERE first_name = '"+ userProfile.getFirstName()+"' AND last_name = '"+userProfile.getLastName()+"' AND email = '"+userProfile.getEmail()+"' AND user_role = '"+userProfile.getEmail()+"'";
         List<UserProfile> users = userProfileRepository.findByQuery(query);
-        //validacija
+        //validation
         if (users.isEmpty()) userProfileRepository.add(userProfile);
-        else throw new UserMessageException("Uneti korisnik vec postoji!");
+        else throw new UserMessageException("A user with these details already exists!");
     }
 
     @Override
@@ -51,17 +51,17 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public void delete(UserProfile userProfile) throws Exception {
-        //proveri da li korisnik ima trenutnih zaduzenja
+        //check if user has current loans
         String query = """
-                       SELECT l.id, l.issuing_date, l.return_date, l.valid, l.user_profile_id, 
-                                               up.first_name, up.last_name, up.email, up.user_role,l.book_id, b.title, b.printing_year, b.quantity
+                       SELECT l.id, l.issuing_date, l.due_date, l.valid, l.user_profile_id, 
+                                               up.first_name, up.last_name, up.email, up.user_role,l.book_id, b.title, b.publishing_year, b.quantity
                                                FROM loan l
                                                JOIN user_profile up ON l.user_profile_id = up.id
                                                JOIN book b ON l.book_id = b.id
                                                WHERE valid = 1 AND user_profile_id = """ + userProfile.getId();
         List <Loan> loans = loanRepository.findByQuery(query);
         if (loans.isEmpty()) userProfileRepository.delete(userProfile);
-        else throw new UserMessageException("Ovaj korisnik mora prethodno da razduzi sve knjige!\nTek nakon toga bice omoguceno brisanje korisnika");
+        else throw new UserMessageException("The user must return books first!\nThe user can only be deleted after that");
     }
 
     @Override
@@ -78,8 +78,8 @@ public class UserProfileServiceImpl implements UserProfileService {
                         "FROM user_profile\n" +
                         "WHERE email = '"+ email +"' AND PASSWORD = '" + password + "'";
         List<UserProfile> users = userProfileRepository.findByQuery(query);
-        //validacija
-        if (users.isEmpty()) throw new UserMessageException("Trazeni korisnik ne postoji u sistemu!");
+        //validation
+        if (users.isEmpty()) throw new UserMessageException("User not found!");
         
         return users.get(0);
     }

@@ -53,24 +53,24 @@ public class UserProfileAddForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dodaj korisnika"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add user"));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Korisnik je:");
+        jLabel1.setText("User role:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Ime:");
+        jLabel2.setText("First name:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Prezime:");
+        jLabel3.setText("Last name:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("e-mail:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Sifra:");
+        jLabel5.setText("Password:");
 
-        btnSave.setText("Sacuvaj");
+        btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -162,9 +162,9 @@ public class UserProfileAddForm extends javax.swing.JDialog {
             String email = txtEmail.getText().trim();
             String password = String.valueOf(txtPassword.getPassword());
             
-            if (firstName.isEmpty())  throw new UserMessageException("Niste uneli ime korisnika");
-            if (lastName.isEmpty()) throw new UserMessageException("Niste uneli prezime korisnika");
-            if (email.isEmpty())  throw new UserMessageException("Niste uneli e-mail");
+            if (firstName.isEmpty())  throw new UserMessageException("Please enter a user first name");
+            if (lastName.isEmpty()) throw new UserMessageException("Please enter a user last name");
+            if (email.isEmpty())  throw new UserMessageException("Please enter e-mail");
                 //validacija za e-mail
                 int valid = 0;
                 for (int i=0; i<email.length(); i++)
@@ -175,24 +175,20 @@ public class UserProfileAddForm extends javax.swing.JDialog {
                         valid = valid + 1;
                         break ;
                     }
-                if (valid != 2) throw new UserMessageException("Nepoznat e-mail format!\ne-mail mora sadrzati sledece simbole: '@' i '.'");
+                if (valid != 2) throw new UserMessageException("Invalid email format!\ne-mail must include the '@' and '.' symbols");
                 
-            if (password.isEmpty())  throw new UserMessageException("Niste uneli sifru");
+            if (password.isEmpty())  throw new UserMessageException("Please enter a password ");
                 
             UserProfile userProfile = new UserProfile(userRole, firstName, lastName, email, password);
             userProfileService.add(userProfile);
             
-            JOptionPane.showMessageDialog(this, "Uspesno ste sacuvali korisnika!");
+            JOptionPane.showMessageDialog(this, "User saved successfully!");
 
-//            txtFirstName.setText("");
-//            txtLastName.setText("");
-//            txtEmail.setText("");
-//            txtPassword.setText("");
                 
             dispose();
             
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

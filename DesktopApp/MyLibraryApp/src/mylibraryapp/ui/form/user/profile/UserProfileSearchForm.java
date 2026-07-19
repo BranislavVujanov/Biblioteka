@@ -55,7 +55,7 @@ public class UserProfileSearchForm extends javax.swing.JDialog {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pregled korisnika sistema");
+        setTitle("User catalog");
 
         tblUserProfile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,7 +70,7 @@ public class UserProfileSearchForm extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblUserProfile);
 
-        jLabel4.setText("Pretraga po kljucnoj reci:");
+        jLabel4.setText("Search by keyword:");
 
         txtFilter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -99,14 +99,14 @@ public class UserProfileSearchForm extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        btnChange.setText("Izmeni podatke");
+        btnChange.setText("Update data");
         btnChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeActionPerformed(evt);
             }
         });
 
-        btnDelete.setText("Izbrisi korisnika");
+        btnDelete.setText("Delete user");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -156,7 +156,7 @@ public class UserProfileSearchForm extends javax.swing.JDialog {
 
             prepareView();
         } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(this, "Niste odabrali korisnika");
+            JOptionPane.showMessageDialog(this, "Please select a user");
         }
 
     }//GEN-LAST:event_btnChangeActionPerformed
@@ -170,7 +170,7 @@ public class UserProfileSearchForm extends javax.swing.JDialog {
         try {
             int index = tblUserProfile.convertRowIndexToModel​(tblUserProfile.getSelectedRow());
       
-            int input = JOptionPane.showConfirmDialog((Component) this, "Kliknite OK ukoliko ste sigurni\nda zelite da obrisete korisnika", "Paznja!", JOptionPane.DEFAULT_OPTION);
+            int input = JOptionPane.showConfirmDialog((Component) this, "Click OK if you are sure\nyou want to delete the user", "Warning!", JOptionPane.DEFAULT_OPTION);
 
                 if (input == 0) {
                     UserProfileTableModel model = (UserProfileTableModel) tblUserProfile.getModel();
@@ -181,9 +181,9 @@ public class UserProfileSearchForm extends javax.swing.JDialog {
                 }
             
             } catch (IndexOutOfBoundsException e) {
-                JOptionPane.showMessageDialog(this, "Niste odabrali korisnika");
+                JOptionPane.showMessageDialog(this, "Please select a user");
             } catch (UserMessageException e) {
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
             } catch (Exception e) {
                 e.printStackTrace();
             }

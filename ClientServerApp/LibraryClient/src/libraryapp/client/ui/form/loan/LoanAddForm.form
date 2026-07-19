@@ -103,12 +103,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Clan biblioteke:"/>
+        <Property name="text" type="java.lang.String" value="Library member:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnChooseUser">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Odaberite clana"/>
+        <Property name="text" type="java.lang.String" value="Select member"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChooseUserActionPerformed"/>
@@ -142,8 +142,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" pref="182" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel5" min="-2" pref="171" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="txtFilter" pref="350" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -165,7 +165,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pretraga knjiga po kljucnoj reci:"/>
+            <Property name="text" type="java.lang.String" value="Search by keyword:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFilter">
@@ -222,17 +222,17 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Trenutna zaduzenja:"/>
+        <Property name="text" type="java.lang.String" value="Current loans:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Prikaz knjiga: odaberite knjigu za pravljnje novog zaduzenja"/>
+        <Property name="text" type="java.lang.String" value="Book display: Select a book to create a new loan"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnUpdateLoan">
       <Properties>
-        <Property name="text" type="java.lang.String" value=" Razduzi"/>
+        <Property name="text" type="java.lang.String" value="Return"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateLoanActionPerformed"/>
@@ -240,7 +240,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnMakeLoan">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Zaduzi"/>
+        <Property name="text" type="java.lang.String" value="Issue loan"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMakeLoanActionPerformed"/>
@@ -251,7 +251,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Dozvoljeno je 5 zaduzenja po clanu biblioteke!"/>
+        <Property name="text" type="java.lang.String" value="Maximum of 5 active loans allowed per member!"/>
       </Properties>
     </Component>
   </SubComponents>

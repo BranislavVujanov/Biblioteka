@@ -37,7 +37,7 @@ public class LoginFormController {
             LoginForm.dispose();
             
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(LoginForm, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(LoginForm, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         } 

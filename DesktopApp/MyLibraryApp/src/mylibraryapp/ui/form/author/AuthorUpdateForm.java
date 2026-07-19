@@ -49,19 +49,24 @@ public class AuthorUpdateForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        pnlAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder("Izmena podataka o autoru"));
+        pnlAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder("Edit author details"));
 
         jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setText("Ime autora:");
+        jTextField1.setText("Author name:");
         jTextField1.setBorder(null);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setText("Prezime autora:");
+        jTextField2.setText("Author surname:");
         jTextField2.setBorder(null);
 
-        btnSave.setText("Sacuvaj izmene");
+        btnSave.setText("Save changes");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -148,17 +153,21 @@ public class AuthorUpdateForm extends javax.swing.JDialog {
 
             authorService.update(selectedAuthor);
 
-            JOptionPane.showMessageDialog(this, "Uspesno ste izmeni podatke o autoru");
+            JOptionPane.showMessageDialog(this, "Author details updated successfully");
 
             dispose();
 
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
@@ -174,7 +183,7 @@ public class AuthorUpdateForm extends javax.swing.JDialog {
     private void prepareView() {
        
         if (selectedAuthor == null) {
-            JOptionPane.showMessageDialog(this, "Nije selektovan autor!");
+            JOptionPane.showMessageDialog(this, "No author selected!");
             dispose();
         } else {
             txtId.setText(selectedAuthor.getId() +"");

@@ -30,7 +30,7 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
             Connection connection = MyDatabaseConnection.getInstance().getConnection();
 
             String query = """
-                           SELECT l.id, l.issuing_date, l.return_date, l.valid, l.user_profile_id, 
+                           SELECT l.id, l.issuing_date, l.due_date, l.valid, l.user_profile_id, 
                            up.first_name, up.last_name, up.email, up.user_role,l.book_id, b.title, b.publishing_year, b.quantity
                            FROM loan l
                            JOIN user_profile up ON l.user_profile_id = up.id
@@ -41,7 +41,7 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 Date issuingDate = resultSet.getDate("issuing_date");
-                Date returnDate = resultSet.getDate("return_date");
+                Date dueDate = resultSet.getDate("due_date");
                 boolean valid = resultSet.getBoolean("valid");
                 
                 int userProfileId = resultSet.getInt("user_profile_id");
@@ -59,7 +59,7 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
 
                 Book book = new Book(bookId, title, publishingYear, quantity, null);
 
-                Loan loan = new Loan(id, issuingDate, returnDate, userProfile, book, valid);
+                Loan loan = new Loan(id, issuingDate, dueDate, userProfile, book, valid);
                 loans.add(loan);
             }
             resultSet.close();
@@ -68,7 +68,7 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
             return loans;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode getAll() klase LoanRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the getAll() method of the LoanRepository class" + ex.getMessage());
         }
     }
 
@@ -77,11 +77,11 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
         try {
             Connection connection = MyDatabaseConnection.getInstance().getConnection();
 
-            String query = "INSERT INTO loan (issuing_date, return_date, user_profile_id, book_id, valid) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO loan (issuing_date, due_date, user_profile_id, book_id, valid) VALUES (?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setDate(1, new java.sql.Date (loan.getIssuingDate().getTime()));
-            preparedStatement.setDate(2, new java.sql.Date (loan.getReturnDate().getTime()));
+            preparedStatement.setDate(2, new java.sql.Date (loan.getDueDate().getTime()));
             preparedStatement.setInt(3, loan.getUserProfile().getId());
             preparedStatement.setInt(4, loan.getBook().getId());
             preparedStatement.setBoolean(5, loan.isValid());
@@ -95,7 +95,7 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode add() klase UserProfileRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the add() method of the LoanRepository class" + ex.getMessage());
         }
     }
 
@@ -111,7 +111,7 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 Date issuingDate = resultSet.getDate("issuing_date");
-                Date returnDate = resultSet.getDate("return_date");
+                Date dueDate = resultSet.getDate("due_date");
                 boolean valid = resultSet.getBoolean("valid");
 
                 int userProfileId = resultSet.getInt("user_profile_id");
@@ -129,7 +129,7 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
 
                 Book book = new Book(bookId, title, publishingYear, quantity, null);
 
-                Loan loan = new Loan(id, issuingDate, returnDate, userProfile, book, valid);
+                Loan loan = new Loan(id, issuingDate, dueDate, userProfile, book, valid);
                 loans.add(loan);
             }
             resultSet.close();
@@ -138,7 +138,7 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
             return loans;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            throw new Exception("Greska u izvrsavanju metode findByQuery() klase LoanRepository" + ex.getMessage());
+            throw new Exception("An error occurred while executing the findByQuery() method of the LoanRepository class" + ex.getMessage());
         }
     }
 
@@ -187,11 +187,11 @@ public class LoanRepository implements GenericRepository<Loan, Integer> {
             preparedStatement.setInt(1, status);
             preparedStatement.setInt(2,loan.getId());
             int affectedRows = preparedStatement.executeUpdate();
-            if (affectedRows != 1) throw new UserMessageException("Status pozajmice nije promenjen!");
+            if (affectedRows != 1) throw new UserMessageException("Failed to update user profile loan status!");
              
         } catch (SQLException ex) {
                System.out.println(ex.getMessage());
-               throw new Exception("Greska u izvrsenju metode update() klase LoanRepository" + ex.getMessage());
+               throw new Exception("An error occurred while executing the update() method of the LoanRepository class" + ex.getMessage());
         }
     }
 

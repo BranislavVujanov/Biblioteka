@@ -38,26 +38,26 @@ public class LoginForm extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Prijava na sistem");
+        setTitle("System Login");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Unesite podatke za prijavu na sistem"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Enter your login credentials"));
 
         jLabel1.setText("Emial:");
 
-        jLabel2.setText("Korisnicka sifra:");
+        jLabel2.setText("Password.");
 
         txtEmail.setText("ana.anic@gmail.com");
 
         txtPassword.setText("1234");
 
-        btnLogin.setText(" Prijavi se");
+        btnLogin.setText("Log in");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
 
-        btnCancel.setText(" Odustani");
+        btnCancel.setText("Quit");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);

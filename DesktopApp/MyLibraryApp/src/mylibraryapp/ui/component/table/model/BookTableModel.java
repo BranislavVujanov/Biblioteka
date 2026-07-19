@@ -14,7 +14,7 @@ import mylibraryapp.domain.Book;
  */
 public class BookTableModel extends AbstractTableModel{
 
-    private final String[] columns = new String[]{"ID", "Naslov", "Godina izdanja", "Broj primeraka"};
+    private final String[] columns = new String[]{"ID", "Title", "Publshing Year", "Copies available"};
     private List<Book> books;
 
     

@@ -5,8 +5,6 @@
 package mylibraryapp.repository;
 
 import java.util.List;
-import mylibraryapp.domain.Author;
-import mylibraryapp.domain.Book;
 import mylibraryapp.domain.Loan;
 
 /**

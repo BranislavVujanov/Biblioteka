@@ -46,19 +46,19 @@ public class AuthorAddForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        pnlAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder("Unos autora"));
+        pnlAuthor.setBorder(javax.swing.BorderFactory.createTitledBorder("Add author"));
 
         jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setText("Ime autora:");
+        jTextField1.setText("Author name");
         jTextField1.setBorder(null);
 
         jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setText("Prezime autora:");
+        jTextField2.setText("Author's surname");
         jTextField2.setBorder(null);
 
-        btnSave.setText("Sacuvaj");
+        btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -124,19 +124,19 @@ public class AuthorAddForm extends javax.swing.JDialog {
             String firstName = txtFirstName.getText().trim();
             String lastName = txtLastName.getText().trim();
             
-            if (firstName.isEmpty()) throw new UserMessageException("Niste uneli autora");
+            if (firstName.isEmpty()) throw new UserMessageException("Please enter an author");
             
             Author newAuthor = new Author(firstName, lastName);
             
             authorService.add(newAuthor);
             
-            JOptionPane.showMessageDialog(this, "Uspesno ste sacuvali autora!");
+            JOptionPane.showMessageDialog(this, "Author saved successfully!");
             txtFirstName.setText("");
             txtLastName.setText("");
             
             
         } catch (UserMessageException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Greska!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

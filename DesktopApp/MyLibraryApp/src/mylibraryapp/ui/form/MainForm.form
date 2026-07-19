@@ -17,12 +17,12 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuLibrary">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Zaduzenja"/>
+            <Property name="text" type="java.lang.String" value="Loans"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="LoanMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pregled zaduzenja"/>
+                <Property name="text" type="java.lang.String" value="Loans catalog"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoanMenuItemActionPerformed"/>
@@ -30,7 +30,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Novo zaduzenje"/>
+                <Property name="text" type="java.lang.String" value="Make new loans"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
@@ -40,12 +40,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuBook">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Knjige"/>
+            <Property name="text" type="java.lang.String" value="Books"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="BookPreviewMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pregled knjiga"/>
+                <Property name="text" type="java.lang.String" value="Book catalog"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookPreviewMenuItemActionPerformed"/>
@@ -53,7 +53,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="BookAddMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dodaj knjigu"/>
+                <Property name="text" type="java.lang.String" value="Add book"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookAddMenuItemActionPerformed"/>
@@ -61,7 +61,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="BookEditMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Izmeni podatke o knjizi"/>
+                <Property name="text" type="java.lang.String" value="Edit book data"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookEditMenuItemActionPerformed"/>
@@ -71,12 +71,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuAuthor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Autori"/>
+            <Property name="text" type="java.lang.String" value="Authors"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="AuthorPreviewMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pregled autora"/>
+                <Property name="text" type="java.lang.String" value="Author catalog"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AuthorPreviewMenuItemActionPerformed"/>
@@ -84,7 +84,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="AuthorAddMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dodaj autora"/>
+                <Property name="text" type="java.lang.String" value="Add author"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AuthorAddMenuItemActionPerformed"/>
@@ -92,7 +92,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="AuthorEditMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Izmeni podatke o autoru"/>
+                <Property name="text" type="java.lang.String" value="Edit author details"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AuthorEditMenuItemActionPerformed"/>
@@ -102,12 +102,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuUserProfile">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Korisnici"/>
+            <Property name="text" type="java.lang.String" value="Users"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="UserProfilePreviewMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pregled korisnika"/>
+                <Property name="text" type="java.lang.String" value="User catalog"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserProfilePreviewMenuItemActionPerformed"/>
@@ -115,7 +115,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="UserProfileAddMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dodaj novog korisnika"/>
+                <Property name="text" type="java.lang.String" value="Add new user"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserProfileAddMenuItemActionPerformed"/>

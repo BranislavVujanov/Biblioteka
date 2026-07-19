@@ -70,9 +70,9 @@ public class MainForm extends javax.swing.JFrame {
         lblUser.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
         lblUser.setText("jLabel1");
 
-        menuLibrary.setText("Zaduzenja");
+        menuLibrary.setText("Loans");
 
-        LoanMenuItem.setText("Pregled zaduzenja");
+        LoanMenuItem.setText("Loans catalog");
         LoanMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoanMenuItemActionPerformed(evt);
@@ -80,7 +80,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuLibrary.add(LoanMenuItem);
 
-        jMenuItem1.setText(" Novo zaduzenje");
+        jMenuItem1.setText("Make new loans");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -90,9 +90,9 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(menuLibrary);
 
-        menuBook.setText("Knjige");
+        menuBook.setText("Books");
 
-        BookPreviewMenuItem.setText("Pregled knjiga");
+        BookPreviewMenuItem.setText("Book catalog");
         BookPreviewMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BookPreviewMenuItemActionPerformed(evt);
@@ -100,7 +100,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuBook.add(BookPreviewMenuItem);
 
-        BookAddMenuItem.setText("Dodaj knjigu");
+        BookAddMenuItem.setText("Add book");
         BookAddMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BookAddMenuItemActionPerformed(evt);
@@ -108,7 +108,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuBook.add(BookAddMenuItem);
 
-        BookEditMenuItem.setText("Izmeni podatke o knjizi");
+        BookEditMenuItem.setText("Edit book data");
         BookEditMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BookEditMenuItemActionPerformed(evt);
@@ -118,9 +118,9 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(menuBook);
 
-        menuAuthor.setText("Autori");
+        menuAuthor.setText("Authors");
 
-        AuthorPreviewMenuItem.setText("Pregled autora");
+        AuthorPreviewMenuItem.setText("Author catalog");
         AuthorPreviewMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AuthorPreviewMenuItemActionPerformed(evt);
@@ -128,7 +128,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuAuthor.add(AuthorPreviewMenuItem);
 
-        AuthorAddMenuItem.setText("Dodaj autora");
+        AuthorAddMenuItem.setText("Add author");
         AuthorAddMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AuthorAddMenuItemActionPerformed(evt);
@@ -136,7 +136,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuAuthor.add(AuthorAddMenuItem);
 
-        AuthorEditMenuItem.setText(" Izmeni podatke o autoru");
+        AuthorEditMenuItem.setText("Edit author details");
         AuthorEditMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AuthorEditMenuItemActionPerformed(evt);
@@ -146,9 +146,9 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(menuAuthor);
 
-        menuUserProfile.setText("Korisnici");
+        menuUserProfile.setText("Users");
 
-        UserProfilePreviewMenuItem.setText("Pregled korisnika");
+        UserProfilePreviewMenuItem.setText("User catalog");
         UserProfilePreviewMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UserProfilePreviewMenuItemActionPerformed(evt);
@@ -156,7 +156,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuUserProfile.add(UserProfilePreviewMenuItem);
 
-        UserProfileAddMenuItem.setText("Dodaj novog korisnika");
+        UserProfileAddMenuItem.setText("Add new user");
         UserProfileAddMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UserProfileAddMenuItemActionPerformed(evt);
@@ -248,7 +248,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void prepareView() {
         UserProfile user = ApplicationSession.getInstance().getLoginUser();   
-        lblUser.setText("Ulogovani korisnik: " + user.getFirstName() + " " + user.getLastName() + " , status: " + user.getUserRole());
+        lblUser.setText("Logged-in User: " + user.getFirstName() + " " + user.getLastName() + " , status: " + user.getUserRole());
 
         if (user.getUserRole().toString().equals("USER"))  {
             menuUserProfile.setEnabled(false);

@@ -23,7 +23,7 @@ public class Controller {
     private final static Controller instance = new Controller();
 
     private Controller() {
-        System.out.println("Kreiran je objekat klase Controller na klijentsko strani");
+        System.out.println("A Controller class instance has been created on the client side");
     }
 
     public static Controller getInstance() {
@@ -117,7 +117,7 @@ public class Controller {
         Communication.getInstance().getSender().writeObject(request);
         Response response = (Response) Communication.getInstance().getReceiver().readObject();
         if (response.getException() == null) {
-            System.out.println("Zaduzenje je prestalo da vazi");
+            System.out.println("Loan has been canceled");
         } else if (response.getException() instanceof UserMessageException) {
             throw new UserMessageException(response.getException().getMessage());
         } else {
@@ -130,7 +130,7 @@ public class Controller {
         Communication.getInstance().getSender().writeObject(request);
         Response response = (Response) Communication.getInstance().getReceiver().readObject();
         if (response.getException() == null) {
-            System.out.println("Napravljeno je novo zaduzenje");
+            System.out.println("New loan was made");
         } else if (response.getException() instanceof UserMessageException) {
             throw new UserMessageException(response.getException().getMessage());
         } else {

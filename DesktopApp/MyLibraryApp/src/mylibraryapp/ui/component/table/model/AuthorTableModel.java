@@ -14,7 +14,7 @@ import mylibraryapp.domain.Author;
  */
 public class AuthorTableModel extends AbstractTableModel {
 
-    private final String[] columns = new String[]{"ID", "Ime", "Prezime"};
+    private final String[] columns = new String[]{"ID", "First Name", "Last Name"};
     private List<Author> authors;
 
     public AuthorTableModel(List<Author> authors) {

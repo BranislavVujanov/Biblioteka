@@ -34,7 +34,7 @@ public class LoanServiceImpl implements LoanService{
     @Override
     public List<Loan> displayCurrentLoans() throws Exception {
         String query = """
-                        SELECT l.id, l.issuing_date, l.return_date, l.valid, l.user_profile_id, 
+                        SELECT l.id, l.issuing_date, l.due_date, l.valid, l.user_profile_id, 
                         up.first_name, up.last_name, up.email, up.user_role,l.book_id, b.title, b.publishing_year, b.quantity
                         FROM loan l
                         JOIN user_profile up ON l.user_profile_id = up.id
@@ -46,7 +46,7 @@ public class LoanServiceImpl implements LoanService{
     @Override
     public List<Loan> displayUserLoans(int id) throws Exception {
         String query = """
-                        SELECT l.id, l.issuing_date, l.return_date, l.valid, l.user_profile_id, 
+                        SELECT l.id, l.issuing_date, l.due_date, l.valid, l.user_profile_id, 
                         up.first_name, up.last_name, up.email, up.user_role,l.book_id, b.title, b.publishing_year, b.quantity
                         FROM loan l
                         JOIN user_profile up ON l.user_profile_id = up.id

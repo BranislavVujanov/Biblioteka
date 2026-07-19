@@ -14,7 +14,7 @@ import mylibraryapp.domain.UserProfile;
  */
 public class UserProfileTableModel extends AbstractTableModel{
     
-    private final String[] columns = new String[]{"Uloga", "ID",  "Ime", "Prezime", "e-mail"};
+    private final String[] columns = new String[]{"Role", "ID",  "First Name", "Last Name", "e-mail"};
     private List<UserProfile> users;
 
     
