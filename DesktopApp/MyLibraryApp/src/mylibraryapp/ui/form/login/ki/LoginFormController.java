@@ -29,7 +29,7 @@ public class LoginFormController {
         try {
             UserProfile userProfile = userProfileService.login(email, password);
             
-            //postavi prijavljenog korisnika u Session obj
+            // put logged in user in Session object
             ApplicationSession.getInstance().setLoginUser(userProfile);
 
             

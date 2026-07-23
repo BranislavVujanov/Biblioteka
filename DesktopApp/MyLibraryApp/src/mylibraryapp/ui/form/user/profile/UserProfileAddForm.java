@@ -165,7 +165,7 @@ public class UserProfileAddForm extends javax.swing.JDialog {
             if (firstName.isEmpty())  throw new UserMessageException("Please enter a user first name");
             if (lastName.isEmpty()) throw new UserMessageException("Please enter a user last name");
             if (email.isEmpty())  throw new UserMessageException("Please enter e-mail");
-                //validacija za e-mail
+                // e-mail validation
                 int valid = 0;
                 for (int i=0; i<email.length(); i++)
                     if (email.charAt(i) == '@') valid = valid +1;
